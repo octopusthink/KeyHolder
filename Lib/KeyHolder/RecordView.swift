@@ -28,6 +28,9 @@ public protocol RecordViewDelegate: class {
     @IBInspectable open var backgroundColor: NSColor = .white {
         didSet { needsDisplay = true }
     }
+    @IBInspectable open var textColorDisabled: NSColor = .disabledControlTextColor {
+        didSet { needsDisplay = true }
+    }
     @IBInspectable open var tintColor: NSColor = .controlAccentPolyfill {
         didSet { needsDisplay = true }
     }
@@ -328,11 +331,11 @@ extension RecordView {
         paragraphStyle.baseWritingDirection = .leftToRight
         let textColor: NSColor
         if !isEnabled {
-            textColor = .disabledControlTextColor
+            textColor = textColorDisabled // .disabledControlTextColor
         } else if modifiers.contains(checkModifier) {
             textColor = tintColor
         } else {
-            textColor = .lightGray
+            textColor = textColorDisabled // .lightGray
         }
         return [.font: NSFont.systemFont(ofSize: floor(fontSize)),
                 .foregroundColor: textColor,
