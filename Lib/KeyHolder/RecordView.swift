@@ -28,7 +28,7 @@ public protocol RecordViewDelegate: class {
     @IBInspectable open var backgroundColor: NSColor = .white {
         didSet { needsDisplay = true }
     }
-    @IBInspectable open var textColorDisabled: NSColor = .disabledControlTextColor {
+    @IBInspectable open var textColorDisabled: NSColor = .white {
         didSet { needsDisplay = true }
     }
     @IBInspectable open var tintColor: NSColor = .controlAccentPolyfill {
@@ -77,7 +77,7 @@ public protocol RecordViewDelegate: class {
         return bounds.height / 1.7
     }
     fileprivate var clearSize: CGFloat {
-        return fontSize / 1.3
+        return fontSize / 1.2
     }
     fileprivate var marginY: CGFloat {
         return (bounds.height - fontSize) / 2.6
@@ -324,7 +324,7 @@ public protocol RecordViewDelegate: class {
 
 // MARK: - Text Attributes
 extension RecordView {
-    fileprivate func modifierTextAttributes(_ modifiers: NSEvent.ModifierFlags, checkModifier: NSEvent.ModifierFlags) -> [NSAttributedString.Key: Any] {
+    override internal func modifierTextAttributes(_ modifiers: NSEvent.ModifierFlags, checkModifier: NSEvent.ModifierFlags) -> [NSAttributedString.Key: Any] {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         paragraphStyle.lineBreakMode = .byTruncatingTail
