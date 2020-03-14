@@ -77,7 +77,7 @@ public protocol RecordViewDelegate: class {
         return bounds.height / 1.7
     }
     fileprivate var clearSize: CGFloat {
-        return fontSize / 1.2
+        return fontSize / 1.5
     }
     fileprivate var marginY: CGFloat {
         return (bounds.height - fontSize) / 2.6
@@ -168,7 +168,7 @@ public protocol RecordViewDelegate: class {
     }
 
     fileprivate func drawClearButton(_ dirtyRext: NSRect) {
-        let clearSize = self.clearSize
+        let clearSize = self.clearSize + 2
         clearNormalImage?.size = CGSize(width: clearSize, height: clearSize)
         clearAlternateImage?.size = CGSize(width: clearSize, height: clearSize)
         clearButton.image = clearNormalImage
