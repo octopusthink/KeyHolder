@@ -28,7 +28,7 @@ public protocol RecordViewDelegate: class {
     @IBInspectable open var backgroundColor: NSColor = .white {
         didSet { needsDisplay = true }
     }
-    @IBInspectable open var textColorDisabled: NSColor = .white {
+    @IBInspectable open var textColorDisabled: NSColor = .disabledControlTextColor {
         didSet { needsDisplay = true }
     }
     @IBInspectable open var tintColor: NSColor = .controlAccentPolyfill {
@@ -324,7 +324,7 @@ public protocol RecordViewDelegate: class {
 
 // MARK: - Text Attributes
 extension RecordView {
-    override internal func modifierTextAttributes(_ modifiers: NSEvent.ModifierFlags, checkModifier: NSEvent.ModifierFlags) -> [NSAttributedString.Key: Any] {
+    fileprivate func modifierTextAttributes(_ modifiers: NSEvent.ModifierFlags, checkModifier: NSEvent.ModifierFlags) -> [NSAttributedString.Key: Any] {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         paragraphStyle.lineBreakMode = .byTruncatingTail
