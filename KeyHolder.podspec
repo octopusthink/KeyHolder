@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
   s.source_files = 'Lib/KeyHolder/*.swift'
   s.resource_bundles = { 'KeyHolder' => ['Lib/KeyHolder/Resources/*.png'] }
   s.frameworks   = 'Carbon', 'Cocoa'
-  s.dependency 'Magnet', '~> 2.3'
+  s.dependency 'Magnet', 'https://github.com/octopusthink/Magnet.git'
 end
